@@ -1,0 +1,56 @@
+{
+  "doc": "This object represents all events related to documents which should be provided to consumers.",
+  "fields": [
+    {
+      "doc": "Request id which triggered this message.",
+      "name": "processRunId",
+      "type": "string"
+    },
+    {
+      "doc": "Type of operation which triggers this events.",
+      "name": "eventType",
+      "type": {
+        "name": "EventType",
+        "symbols": [
+          "DOCUMENT_CREATED",
+          "DOCUMENT_DELETED",
+          "DOCUMENT_UPDATED"
+        ],
+        "type": "enum"
+      }
+    },
+    {
+      "doc": "Data related to eventType represented in json format.",
+      "name": "metadata",
+      "type": "string"
+    },
+    {
+      "doc": "Identifier of document for which event was published",
+      "name": "externalDocumentId",
+      "type": "string"
+    },
+    {
+      "doc": "Timestamp of event on ZSL (when document was created/updated/deleted) in millis.",
+      "name": "triggeredAt",
+      "type": "long"
+    },
+    {
+      "doc": "This field could be used for filtering. It will contain information about which was the business reason of this event.",
+      "name": "businessContext",
+      "type": "string"
+    },
+    {
+      "doc": "This field could be used for filtering. It will contain from which document repository originally this event came. It could be also used for differentiate methods of metadata deserializing methods (different source could produce different input)",
+      "name": "sourceSystem",
+      "type": "string"
+    },
+    {
+      "doc": "This field could be used for filtering. It will contain CoriaID of predicted target product (this value will be extracted from metadata if possible).",
+      "name": "targetProduct",
+      "type": "string"
+    }
+  ],
+  "name": "IncompleteDocumentEvent",
+  "namespace": "com.commerzbank.cobest.kafka.client.avro",
+  "type": "record"
+}
